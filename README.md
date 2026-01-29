@@ -8,7 +8,7 @@ The objective was to convert the provided Figma homepage design into a functiona
 ## 🚀 Live Preview
 
 Live deployed version of the project:  
-🔗 https://appsrow-task1-pelotech.netlify.app/
+🌐 https://appsrow-task1-pelotech.netlify.app/
 
 ---
 
@@ -64,6 +64,23 @@ The following AI tools were used responsibly during development:
 
 ---
 
+## 🚧 Challenges Faced
+
+While working on this task, I faced a few real-world frontend challenges:
+
+- **Hero Section Responsiveness**  
+  The Hero component contains large typography, overlapping elements, and desktop-focused positioning. Making it fully responsive for smaller screens without affecting the desktop layout required multiple iterations. Desktop responsiveness is complete, and mobile optimization is currently in progress.
+
+- **Animation Implementation**  
+  Implementing smooth and consistent animations using Framer Motion was challenging, especially when coordinating animations with responsive layouts. Fine-tuning timing, easing, and animation behavior across screen sizes required careful testing.
+
+- **Balancing Pixel Accuracy and Responsiveness**  
+  Maintaining pixel-perfect accuracy for desktop while ensuring responsive behavior on mobile devices was challenging for sections using absolute positioning and complex layouts. Desktop accuracy was prioritized as per task requirements, followed by responsive improvements.
+
+These challenges helped improve my understanding of responsive UI design and animation-driven frontend development in real-world scenarios.
+
+----
+
 ## ⚠️ Known Limitations
 
 - Hero section mobile responsiveness is not fully complete
@@ -80,7 +97,6 @@ These were intentionally left to ensure **on-time submission**, as encouraged in
   - Accurate desktop implementation
   - Smooth animations
   - Functional and maintainable components
-- Avoided unnecessary creative changes beyond the provided Figma design
 
 ---
 
