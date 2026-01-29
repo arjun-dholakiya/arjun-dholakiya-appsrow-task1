@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const steps = [
   'Getting started with Kubernetes?',
@@ -9,52 +10,59 @@ const steps = [
 ];
 
 export default function ConsultingSteps() {
+  const [active, setActive] = useState(0);
+
   return (
     <div className="relative w-full">
-      {/* Rounded background bar */}
-      <div
-        className="
-          bg-[#0b3b46]
-          rounded-2xl
-          px-12
-          py-8
-          flex
-          justify-between
-          items-start
-        "
-      >
-        {steps.map((step, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center text-center max-w-[160px]"
-          >
-            {/* Circle */}
-            <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center -mt-14">
-              <div className="w-11 h-11 rounded-full bg-[#0b3b46] flex items-center justify-center">
-                <span
-                  className={`
-                    text-sm font-semibold
-                    ${index === 0 ? 'text-white' : 'text-white/60'}
-                  `}
-                >
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-              </div>
-            </div>
+      <div className="bg-[#0b3b46] rounded-2xl px-12 py-8 flex justify-between items-start">
+        {steps.map((step, index) => {
+          const isActive = active === index;
 
-            {/* Text */}
-            <p
-              className={`
-                mt-4
-                text-[10px]
-                leading-snug
-                ${index === 0 ? 'text-white font-semibold' : 'text-white/60'}
-              `}
+          return (
+            <button
+              key={index}
+              onClick={() => setActive(index)}
+              className="flex flex-col items-center text-center max-w-[160px] focus:outline-none"
             >
-              {step}
-            </p>
-          </div>
-        ))}
+              {/* Circle */}
+              <motion.div
+                animate={{
+                  scale: isActive ? 1.1 : 1,
+                  opacity: isActive ? 1 : 0.85
+                }}
+                transition={{ type: 'spring', stiffness: 260, damping: 18 }}
+                className="w-14 h-14 rounded-full bg-white flex items-center justify-center -mt-14"
+              >
+                <div className="w-11 h-11 rounded-full bg-[#0b3b46] flex items-center justify-center">
+                  <span className="text-sm font-semibold text-white">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Text */}
+              <motion.p
+                animate={{
+                  opacity: isActive ? 1 : 0.55,
+                  filter: isActive ? 'blur(0px)' : 'blur(0.4px)'
+                }}
+                transition={{ duration: 0.25 }}
+                className={`
+                  mt-4
+                  text-[10px]
+                  leading-snug
+                  ${
+                    isActive
+                      ? 'text-white font-semibold'
+                      : 'text-white'
+                  }
+                `}
+              >
+                {step}
+              </motion.p>
+            </button>
+          );
+        })}
       </div>
     </div>
   );

@@ -19,7 +19,6 @@ function App() {
       <ConsultingSection />
     <CaseStudiesSection/>
       <ContactConsulting />
-
       <Footer />
     </>
   );

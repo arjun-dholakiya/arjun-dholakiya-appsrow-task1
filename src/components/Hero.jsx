@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import oceanbg from '../assets/oceanbg.svg';
 import logo from '../assets/logo.svg';
 import '../css/hero.css';
@@ -9,23 +9,23 @@ import Navbar from './NavBar';
 function Hero() {
   const markerRef = useRef(null);
   const [scrollOffset, setScrollOffset] = useState(0);
-  const [heroInView, setHeroInView] = useState(true);
+  const [heroInView, setHeroInView] = useState(false);
 
-  /* VERY slow parallax */
+  /* Smooth parallax */
   useEffect(() => {
     const onScroll = () => {
-      setScrollOffset(window.scrollY * 0.20); // slightly slower
+      setScrollOffset(window.scrollY * 0.2);
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  /* Detect hero only */
+  /* Detect hero visibility */
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setHeroInView(entry.isIntersecting),
-      { threshold: 0 }
+      { threshold: 0.15 }
     );
 
     if (markerRef.current) observer.observe(markerRef.current);
@@ -41,52 +41,56 @@ function Hero() {
       <img src={oceanbg} alt="Ocean" className="hero-bg" />
       <div className="absolute inset-0 bg-black/10 z-10" />
 
-      {/* LOGO (slower return) */}
-      <motion.img
-        src={logo}
-        alt="Pelotech logo"
-        className="absolute top-6 left-6 w-28 sm:w-32 md:w-40 z-50"
-        animate={{
-          x: heroInView ? 0 : -220,
-          opacity: heroInView ? 1 : 0
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 30,   // ⬅ slower
-          damping: 26,     // ⬅ smoother
-          mass: 1.8        // ⬅ heavier
-        }}
-      />
+      {/* LOGO + NAVBAR */}
+      <AnimatePresence>
+        {heroInView && (
+          <>
+            {/* LOGO */}
+            <motion.img
+              src={logo}
+              alt="Pelotech logo"
+              className="absolute top-6 left-6 w-28 sm:w-32 md:w-40 z-50"
+              initial={{ x: -180, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -180, opacity: 0 }}
+              transition={{
+                type: 'spring',
+                stiffness: 120,
+                damping: 18,
+                mass: 0.9
+              }}
+            />
 
-      {/* NAVBAR (moves RIGHT now) */}
-      <motion.div
-        animate={{
-          x: heroInView ? 0 : 220,
-          opacity: heroInView ? 1 : 0
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 28,
-          damping: 28,
-          mass: 1.9
-        }}
-      >
-        <Navbar />
-      </motion.div>
+            {/* NAVBAR */}
+            <motion.div
+              initial={{ x: 180, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 180, opacity: 0 }}
+              transition={{
+                type: 'spring',
+                stiffness: 110,
+                damping: 20,
+                mass: 1
+              }}
+            >
+              <Navbar />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
-      {/* INFO CARD */}
+      {/* INFO CARD — moved UP + faster parallax */}
       <motion.div
         className="
           absolute
-          top-16
-          sm:top-28
-          md:top-80
+          top-10
+          sm:top-20
+          md:top-64
           right-10
-          -mt-10
           z-50
         "
         style={{
-          transform: `translateX(-${scrollOffset * 0.26}px)`
+          transform: `translateX(-${scrollOffset * 0.42}px)`
         }}
       >
         <HeroInfoCard />

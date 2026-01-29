@@ -4,7 +4,7 @@ export default function ConsultingInfo() {
         <div className="max-w-7xl mx-auto">
           {/* Top row */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8 ml-2">
-            <h3 className="text-xl font-medium text-[#021a20] md:pr-12">
+            <h3 className="text-[26px] font-medium text-[#021a20] md:pr-12">
               Getting started with <br /> Kubernetes?
             </h3>
   
