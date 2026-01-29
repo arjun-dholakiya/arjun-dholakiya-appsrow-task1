@@ -8,7 +8,7 @@ The objective was to convert the provided Figma homepage design into a functiona
 ## 🚀 Live Preview
 
 Live deployed version of the project:  
-🌐 https://appsrow-task1-pelotech.netlify.app/
+🌐 https://appsrow-task1-pelotech.netlify.app
 
 ---
 
