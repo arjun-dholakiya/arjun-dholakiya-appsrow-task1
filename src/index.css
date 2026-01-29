@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    font-family: 'Manrope', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-manrope {
+    font-family: 'Manrope', sans-serif;
+  }
+}
+
+@theme {
+  --color-brand: #02252f;
+}
