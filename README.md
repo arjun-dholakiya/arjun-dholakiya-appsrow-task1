@@ -14,10 +14,10 @@ Live deployed version of the project:
 
 ## ✅ Task Status
 
-- **Task Assigned:** Task 1 (Homepage)
+- **Task Assigned:** Task 1 (pelotech ui)
 - **Overall Progress:** Completed
 - **Desktop Responsiveness:** ✅ 100%
-- **Mobile / Tablet Responsiveness:** ⚠️ ~80%
+- **Mobile Responsiveness:** ⚠️ ~80%
 - **Animations:** ✅ 100% working
 - **Functionality:** ✅ All interactions working correctly
 
@@ -58,12 +58,9 @@ Live deployed version of the project:
 
 The following AI tools were used responsibly during development:
 
-- **ChatGPT** – Assisted with layout logic, debugging, responsiveness strategies, and code refinement
-- **Gemini** – Used for cross-checking implementation approaches and validating UI logic
-- **Antigravity** – Used for UI inspiration and animation flow ideas
-
-Most of the code was written and implemented manually in **VS Code**.  
-AI tools were used only as assistance; all final decisions, structure, and implementation were done by me.
+- **ChatGPT**
+- **Gemini**
+- **Antigravity**
 
 ---
 
