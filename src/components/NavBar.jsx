@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Navbar() {
+  const [active, setActive] = useState('Services');
+
   return (
     <nav
       className="
         fixed
-        top-6
+        top-5
         left-5/8
-        translate-x-[-35%]
+        translate-x-[-46%]
         z-50
-        w-[55%]
+        w-[63%]
         max-w-4xl
         rounded-2xl
         bg-white/15
@@ -26,10 +28,10 @@ function Navbar() {
     >
       {/* Menu */}
       <div className="flex items-center gap-6 text-white text-sm font-medium">
-        <NavItem label="Services" />
-        <NavItem label="Customer cases" />
-        <NavItem label="Resources" />
-        <NavItem label="Company" />
+        <NavItem label="Services" active={active} setActive={setActive} />
+        <NavItem label="Customer cases" active={active} setActive={setActive} />
+        <NavItem label="Resources" active={active} setActive={setActive} />
+        <NavItem label="Company" active={active} setActive={setActive} />
       </div>
 
       {/* CTA */}
@@ -52,9 +54,25 @@ function Navbar() {
   );
 }
 
-function NavItem({ label }) {
+function NavItem({ label, active, setActive }) {
+  const isActive = active === label;
+
   return (
-    <button className="flex items-center gap-1 text-white/90 hover:text-white">
+    <button
+      onClick={() => setActive(label)}
+      className={`
+        flex
+        items-center
+        gap-1
+        px-3
+        py-1.5
+        rounded-xl
+        transition
+        ${
+          isActive ? 'bg-white/20 text-white' : 'text-white/90 hover:text-white'
+        }
+      `}
+    >
       {label}
       <span className="text-xs opacity-70">▾</span>
     </button>
