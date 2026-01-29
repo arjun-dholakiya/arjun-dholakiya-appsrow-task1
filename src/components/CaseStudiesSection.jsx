@@ -4,13 +4,35 @@ import water from '../assets/water.svg';
 
 export default function CaseStudiesSection() {
   return (
-    <section className="bg-[#062c36] py-32 text-white">
+    <section className="bg-[#062c36] py-24 md:py-32 text-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* HEADER */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-14">
-          <h2 className="text-[42px] font-medium ml-30">Case studies</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 mb-12 md:mb-14">
+          <h2
+            className="
+              text-[32px]
+              md:text-[42px]
+              font-medium
+              text-center
+              md:text-left
+              md:ml-30
+            "
+          >
+            Case studies
+          </h2>
 
-          <p className="text-[14px] text-white/80 max-w-md ml-26">
+          <p
+            className="
+              text-[14px]
+              text-white/80
+              max-w-md
+              text-center
+              md:text-left
+              mx-auto
+              md:mx-0
+              md:ml-26
+            "
+          >
             Dive into how Pelotech transforms challenges into success stories
             through our Kubernetes consulting services. Real-world results that
             speak for themselves.
@@ -52,7 +74,18 @@ export default function CaseStudiesSection() {
         />
 
         {/* FOOTER TEXT */}
-        <p className="text-center text-[18px] text-white/90 mt-36 max-w-xl mx-auto">
+        <p
+          className="
+            text-center
+            text-[16px]
+            md:text-[18px]
+            text-white/90
+            mt-24
+            md:mt-36
+            max-w-xl
+            mx-auto
+          "
+        >
           Want to explore how Pelotech can achieve these outcomes for your team?
           Let’s talk about your unique challenges and how we can help.
         </p>
