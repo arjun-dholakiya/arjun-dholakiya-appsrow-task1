@@ -10,11 +10,11 @@ function HeroInfoCard() {
         gap-3
         sm:gap-4
         md:gap-5
-        w-[90vw]
+        w-[92vw]
         sm:w-auto
         max-w-xs
         sm:max-w-sm
-        md:max-w-120
+        md:max-w-lg
         rounded-xl
         sm:rounded-2xl
         md:rounded-3xl

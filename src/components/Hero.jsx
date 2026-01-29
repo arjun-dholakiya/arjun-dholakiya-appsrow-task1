@@ -11,6 +11,8 @@ function Hero() {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [heroInView, setHeroInView] = useState(false);
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+
   /* Smooth parallax */
   useEffect(() => {
     const onScroll = () => {
@@ -79,18 +81,22 @@ function Hero() {
         )}
       </AnimatePresence>
 
-      {/* INFO CARD — moved UP + faster parallax */}
+      {/* HERO INFO CARD (FIXED FOR MOBILE) */}
       <motion.div
         className="
           absolute
-          top-10
-          sm:top-20
+          top-74
+          sm:top-24
           md:top-64
-          right-10
+          right-4
+          sm:right-8
+          md:right-10
           z-50
         "
         style={{
-          transform: `translateX(-${scrollOffset * 0.42}px)`
+          transform: isMobile
+            ? `translateX(-${scrollOffset * 0.4}px)`
+            : `translateX(-${scrollOffset * 1.25}px)`
         }}
       >
         <HeroInfoCard />
